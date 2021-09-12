@@ -1,6 +1,5 @@
-﻿using AutoMapper;
-using AutoMapperProject.Input;
-using AutoMapperProject.OutPut;
+﻿using AutoMapperProject.Input;
+using AutoMapperProject.Output;
 using AutoMapperProject.ProfileMapper;
 using Newtonsoft.Json;
 using System;
