@@ -10,7 +10,7 @@ namespace AutoMapperProject
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("InputOrder");
+            Console.WriteLine("Input :: Order");
             InputOrder inputOrder = InputOrder.BuildInputOrder();
             Console.WriteLine(JsonConvert.SerializeObject(inputOrder, Formatting.Indented));
 
@@ -18,8 +18,8 @@ namespace AutoMapperProject
 
             InputToOutputMapper mapping = new InputToOutputMapper();
 
-            Console.WriteLine("OutputOrder");
-            OutputOrder outputOrder = mapping.DoInputToOutputMappeing();
+            Console.WriteLine("Output :: Order");
+            OutputOrder outputOrder = mapping.DoInputToOutputMapping();
             Console.WriteLine(JsonConvert.SerializeObject(outputOrder, Formatting.Indented));
 
             Console.ReadKey();

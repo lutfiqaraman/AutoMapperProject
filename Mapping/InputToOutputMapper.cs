@@ -11,7 +11,7 @@ namespace AutoMapperProject.ProfileMapper
 
         }
 
-        public OutputOrder DoInputToOutputMappeing()
+        public OutputOrder DoInputToOutputMapping()
         {
             InputOrder inputOrder = InputOrder.BuildInputOrder();
 
