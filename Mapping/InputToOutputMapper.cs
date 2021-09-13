@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using AutoMapperProject.Input;
 using AutoMapperProject.Output;
+using System;
 
 namespace AutoMapperProject.ProfileMapper
 {
@@ -11,7 +12,7 @@ namespace AutoMapperProject.ProfileMapper
 
         }
 
-        public OutputOrder DoInputToOutputMapping()
+        public OutputOrder DoInputToOutputMapping1()
         {
             InputOrder inputOrder = InputOrder.BuildInputOrder();
 
@@ -21,7 +22,24 @@ namespace AutoMapperProject.ProfileMapper
             });
 
             IMapper mapper = config.CreateMapper();
-            OutputOrder result = mapper.Map<InputOrder, OutputOrder>(inputOrder);
+            OutputOrder result = mapper.Map<OutputOrder>(inputOrder);
+
+            return result;
+        }
+
+        public OutputOrder DoInputToOutputMapping2()
+        {
+            InputOrder inputOrder = InputOrder.BuildInputOrder();
+
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<InputOrder, OutputOrder>()
+                    .ForMember(dest => dest.Created, opt => opt.Ignore())
+                    .AfterMap((src, dest) => dest.Created = DateTime.Now.ToString("O"));
+            });
+
+            IMapper mapper = config.CreateMapper();
+            OutputOrder result = mapper.Map<OutputOrder>(inputOrder);
 
             return result;
         }
