@@ -19,6 +19,7 @@ namespace AutoMapperProject.ProfileMapper
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<InputOrder, OutputOrder>();
+                cfg.CreateMap<InputItems, OutputItems>();
             });
 
             IMapper mapper = config.CreateMapper();
@@ -36,6 +37,8 @@ namespace AutoMapperProject.ProfileMapper
                 cfg.CreateMap<InputOrder, OutputOrder>()
                     .ForMember(dest => dest.Created, opt => opt.Ignore())
                     .AfterMap((src, dest) => dest.Created = DateTime.Now.ToString("O"));
+
+                cfg.CreateMap<InputItems, OutputItems>();
             });
 
             IMapper mapper = config.CreateMapper();
