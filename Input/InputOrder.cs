@@ -9,6 +9,8 @@ namespace AutoMapperProject.Input
         public DateTime Created { get; set; }
         public List<InputItems> Items { get; set; }
         public InputCustomer Customer { get; set; }
+        public InputAddress ShippingAddress { get; set; }
+        public InputAddress BillingAddress { get; set; }
 
         public static InputOrder BuildInputOrder()
         {
@@ -23,7 +25,21 @@ namespace AutoMapperProject.Input
                     new InputItems { Name = "Jacket", Cost = 125 }
                 },
 
-                Customer = InputCustomer.BuildInputCustomer()
+                Customer = InputCustomer.BuildInputCustomer(),
+
+                BillingAddress = new InputAddress()
+                {
+                    City    = "Amman",
+                    Street  = "A1 - Good Street",
+                    ZipCode = "11185" 
+                },
+
+                ShippingAddress = new InputAddress()
+                {
+                    City    = "Aqaba",
+                    Street  = "B1 - Excellent Street",
+                    ZipCode = "10175"
+                }
             };
         }
     }
