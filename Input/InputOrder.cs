@@ -8,6 +8,7 @@ namespace AutoMapperProject.Input
         public string OrderID { get; set; }
         public DateTime Created { get; set; }
         public List<InputItems> Items { get; set; }
+        public InputCustomer Customer { get; set; }
 
         public static InputOrder BuildInputOrder()
         {
@@ -15,11 +16,14 @@ namespace AutoMapperProject.Input
             {
                 OrderID = "1212-5566",
                 Created = DateTime.Now,
+                
                 Items = new List<InputItems>()
                 {
-                    new InputItems{ Name = "Ball", Cost = 50},
-                    new InputItems{ Name = "Jacket", Cost = 125}
-                }
+                    new InputItems { Name = "Ball", Cost = 50 },
+                    new InputItems { Name = "Jacket", Cost = 125 }
+                },
+
+                Customer = InputCustomer.BuildInputCustomer()
             };
         }
     }
