@@ -46,5 +46,25 @@ namespace AutoMapperProject.ProfileMapper
 
             return result;
         }
+
+        public OutputOrder DoInputToOutputMapping3()
+        {
+            InputOrder inputOrder = InputOrder.BuildInputOrder();
+
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<InputOrder, OutputOrder>()
+                    .ForMember(dest => dest.Created, opt => opt.Ignore())
+                    .ForMember(dest => dest.CustomerName, opt => opt.MapFrom(src => $"{src.Customer.FirstName} {src.Customer.LastName}"))
+                    .AfterMap((src, dest) => dest.Created = DateTime.Now.ToString("O"));
+
+                cfg.CreateMap<InputItems, OutputItems>();
+            });
+
+            IMapper mapper = config.CreateMapper();
+            OutputOrder result = mapper.Map<OutputOrder>(inputOrder);
+
+            return result;
+        }
     }
 }

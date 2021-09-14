@@ -28,6 +28,10 @@ namespace AutoMapperProject
             OutputOrder outputOrder2 = mapping.DoInputToOutputMapping2();
             Console.WriteLine(JsonConvert.SerializeObject(outputOrder2, Formatting.Indented));
 
+            Console.WriteLine("Output :: Order :: Mapper 3");
+            OutputOrder outputOrder3 = mapping.DoInputToOutputMapping3();
+            Console.WriteLine(JsonConvert.SerializeObject(outputOrder3, Formatting.Indented));
+
             Console.ReadKey();
         }
     }

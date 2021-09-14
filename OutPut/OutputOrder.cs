@@ -7,6 +7,6 @@ namespace AutoMapperProject.Output
         public string OrderId { get; set; }
         public string Created { get; set; }
         public List<OutputItems> Items { get; set; }
-        public string CustomerFirstName { get; set; }
+        public string CustomerName { get; set; }
     }
 }
