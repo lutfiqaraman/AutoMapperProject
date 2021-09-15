@@ -9,5 +9,6 @@ namespace AutoMapperProject.Output
         public List<OutputItems> Items { get; set; }
         public string Customer { get; set; }
         public OutputAddresses Addresses { get; set; }
+        public PaymentType PaymentType { get; set; }
     }
 }

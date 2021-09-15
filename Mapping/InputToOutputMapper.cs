@@ -65,6 +65,11 @@ namespace AutoMapperProject.ProfileMapper
                                 BillingAddress  = context.Mapper.Map<string>(src.BillingAddress)
                             };
                         }))
+                    .ForMember(dest => dest.PaymentType, opt => opt.MapFrom(
+                        (src, dest, member, context) => 
+                            context.Items.ContainsKey("IsPayByCard") && context.Items["IsPayByCard"].Equals(true) 
+                                ? PaymentType.Card 
+                                : PaymentType.Cash))
                     .AfterMap((src, dest) => dest.Created = DateTime.Now.ToString("O"));
 
                 cfg.CreateMap<InputItems, OutputItems>();
@@ -74,7 +79,8 @@ namespace AutoMapperProject.ProfileMapper
             });
 
             IMapper mapper = config.CreateMapper();
-            OutputOrder result = mapper.Map<OutputOrder>(inputOrder);
+            OutputOrder result = 
+                mapper.Map<OutputOrder>(inputOrder, opt => opt.Items.Add("IsPayByCard", true));
 
             return result;
         }
